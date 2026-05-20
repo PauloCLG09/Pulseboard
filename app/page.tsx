@@ -1,15 +1,16 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import StatCard from "@/components/dashboard/StatCard";
 import { DollarSign,Users,Activity,CreditCard,} from "lucide-react"
+import RevenueChart from "@/components/dashboard/RevenueChart"
+import RecentSales from "@/components/dashboard/RecentSales";
+import UsersTable from "@/components/dashboard/UsersTable";
 
 
 export default function Home() {
   return (
     <DashboardLayout>
       <div>
-        <h1 className="text-3xl font-bold text-white">
-          Welcome back 👋
-        </h1>
+        <h1 className="text-3xl font-bold text-white">Welcome back 👋</h1>
 
         <p className="text-zinc-400 mt-2 mb-8">
           Here’s what’s happening today.
@@ -23,12 +24,7 @@ export default function Home() {
             icon={DollarSign}
           />
 
-          <StatCard
-            title="Users"
-            value="2,350"
-            change="+15.3%"
-            icon={Users}
-          />
+          <StatCard title="Users" value="2,350" change="+15.3%" icon={Users} />
 
           <StatCard
             title="Activity"
@@ -43,8 +39,16 @@ export default function Home() {
             change="+12.5%"
             icon={CreditCard}
           />
+          <div className="grid grid-cols-1 2xl:grid-cols-3 gap-6 mt-8">
+            {" "}
+            <div className="2xl:col-span-2">
+              {" "}
+              <RevenueChart />{" "}
+            </div>{" "}
+            <RecentSales /> <UsersTable />
+          </div>
         </div>
       </div>
     </DashboardLayout>
-  )
+  );
 }
