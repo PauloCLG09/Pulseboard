@@ -1,18 +1,29 @@
-import {Menu} from "lucide-react"
+import { Menu, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Navbar({
-  setSidebarOpen,
+export default function Navbar({ setSidebarOpen }: NavbarProps) {
+  const { setTheme, resolvedTheme } = useTheme();
 
-}: NavbarProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <header className="h-16 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between px-6">
       <div className="flex items-center gap-4">
-
-        <button className="md:hidden text-white"
+        <button
+          className="md:hidden text-white"
           onClick={() => setSidebarOpen(true)}
         >
           <Menu size={24} />
@@ -21,6 +32,17 @@ export default function Navbar({
       </div>
 
       <div className="flex items-center gap-4">
+        {mounted && (
+          <button
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
+            className="p-2 rounded-lg bg-zinc-900 text-white hover:bg-zinc-800 transition"
+          >
+            {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        )}
+
         <div className="w-10 h-10 rounded-full bg-purple-500" />
       </div>
     </header>
