@@ -20,15 +20,15 @@ export default function Navbar({ setSidebarOpen }: NavbarProps) {
   }, []);
 
   return (
-    <header className="h-16 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between px-6">
+    <header className="h-16 border-b border-border bg-background flex items-center justify-between px-6">
       <div className="flex items-center gap-4">
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-foreground"
           onClick={() => setSidebarOpen(true)}
         >
           <Menu size={24} />
         </button>
-        <h2 className="text-white text-xl font-semibold">Dashboard</h2>
+        <h2 className="text-foreground text-xl font-semibold">Dashboard</h2>
       </div>
 
       <div className="flex items-center gap-4">
@@ -37,7 +37,7 @@ export default function Navbar({ setSidebarOpen }: NavbarProps) {
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
-            className="p-2 rounded-lg bg-zinc-900 text-white hover:bg-zinc-800 transition"
+            className="p-2 rounded-lg bg-muted text-foreground hover:bg-accent transition"
           >
             {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>

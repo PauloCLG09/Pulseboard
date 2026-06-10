@@ -1,6 +1,7 @@
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import StatCard from "@/components/dashboard/StatCard";
+import { users } from "@/app/data/users";
 
 import {
   DollarSign,
@@ -17,9 +18,7 @@ export default function Home() {
   return (
     <DashboardLayout>
       <div>
-        <h1 className="text-3xl font-bold text-white">
-          Welcome back 👋
-        </h1>
+        <h1 className="text-3xl font-bold text-white">Welcome back 👋</h1>
 
         <p className="text-zinc-400 mt-2 mb-8">
           Here’s what’s happening today.
@@ -34,12 +33,7 @@ export default function Home() {
             icon={DollarSign}
           />
 
-          <StatCard
-            title="Users"
-            value="2,350"
-            change="+15.3%"
-            icon={Users}
-          />
+          <StatCard title="Users" value="2,350" change="+15.3%" icon={Users} />
 
           <StatCard
             title="Activity"
@@ -67,7 +61,7 @@ export default function Home() {
 
         {/* Users Table */}
         <div className="w-full">
-          <UsersTable />
+          <UsersTable users={users} />
         </div>
       </div>
     </DashboardLayout>

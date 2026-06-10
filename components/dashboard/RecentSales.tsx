@@ -20,40 +20,31 @@ const sales = [
 
 export default function RecentSales() {
   return (
-    <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6">
-      {" "}
+    <div className="bg-card border border-border rounded-2xl p-6">
       <div className="mb-6">
-        {" "}
-        <h3 className="text-white text-xl font-semibold">
-          {" "}
-          Recent Sales{" "}
-        </h3>{" "}
-        <p className="text-zinc-400 text-sm mt-1">
-          {" "}
-          You made 265 sales this month{" "}
-        </p>{" "}
-      </div>{" "}
+        <h3 className="text-card-foreground text-xl font-semibold">
+          Recent Sales
+        </h3>
+        <p className="text-muted-foreground text-sm mt-1">
+          You made 265 sales this month
+        </p>
+      </div>
       <div className="space-y-5">
-        {" "}
         {sales.map((sale) => (
           <div key={sale.email} className="flex items-center justify-between">
-            {" "}
             <div className="flex items-center gap-3">
-              {" "}
-              <div className="w-10 h-10 rounded-full bg-purple-500" />{" "}
+              <div className="w-10 h-10 rounded-full bg-purple-500" />
               <div>
-                {" "}
-                <p className="text-white text-sm font-medium">
-                  {" "}
-                  {sale.name}{" "}
-                </p>{" "}
-                <p className="text-zinc-400 text-sm"> {sale.email} </p>{" "}
-              </div>{" "}
-            </div>{" "}
-            <p className="text-green-400 font-medium"> {sale.amount} </p>{" "}
+                <p className="text-card-foreground text-sm font-medium">
+                  {sale.name}
+                </p>
+                <p className="text-muted-foreground text-sm">{sale.email} </p>
+              </div>
+            </div>
+            <p className="text-green-400 font-medium"> {sale.amount} </p>
           </div>
-        ))}{" "}
-      </div>{" "}
+        ))}
+      </div>
     </div>
   );
 }
